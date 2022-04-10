@@ -24,8 +24,9 @@ public class SubAB1001 {
 //		
 //		String[] str = br.readLine().split(" ");
 //		int a = Integer.parseInt(str[0]), b = Integer.parseInt(str[1]);
+//		int sub = a - b;
 //		
-//		System.out.println(a - b);
+//		System.out.println(sub);
 		
 		// 3. Using BufferedReader, StringTokenizer Classes
 //		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -33,7 +34,8 @@ public class SubAB1001 {
 //		String str = br.readLine();
 //		StringTokenizer st = new StringTokenizer(str, " ");
 //		int a = Integer.parseInt(st.nextToken()), b = Integer.parseInt(st.nextToken());
+//		int sub = a - b;
 //		
-//		System.out.println(a - b);
+//		System.out.println(sub);
 	}
 }
