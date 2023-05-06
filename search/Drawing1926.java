@@ -62,7 +62,6 @@ public class Drawing1926 {
                 cnt = 0; // 그림넓이 초기화
                 if (!check[i][j] && graph[i][j] == 1) { // 방문한 적 없고 그림일 경우
 //                    dfs(i, j); // 깊이 우선 주변 탐색 진행하기
-                    cnt++;
                     bfs(i, j); // 넓이 우선 주변 탐색 진행하기 (속도 더 빠름)
                     answer.add(cnt); // 그림 배열에 넓이 추가하기
                 }
@@ -91,6 +90,7 @@ public class Drawing1926 {
 
     static void bfs(int x, int y) {
         check[x][y] = true;
+        cnt++;
         Queue<Point> q = new LinkedList<>();
         q.add(new Point(x, y));
 
