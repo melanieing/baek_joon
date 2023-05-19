@@ -31,6 +31,7 @@ public class RedGreen10026 {
         StringTokenizer st;
         // 가로/세로 길이 입력받기
         n = Integer.parseInt(br.readLine());
+        
         // 그리드 값 입력받기
         board = new char[n][n];
         for (int i = 0; i < n; i++) {
@@ -46,11 +47,11 @@ public class RedGreen10026 {
 
         for (int i = 0; i < n; i++) {
             for (int j =0; j < n; j++) {
-                if (!checkForYes[i][j]) {
+                if (!checkForYes[i][j]) { // 적록색약인 사람의 경우
                     dfsForYes(i, j);
                     cntForYes++;
                 }
-                if (!checkForNo[i][j]) {
+                if (!checkForNo[i][j]) { // 적록색약이 아닌 사람의 경우
                     dfsForNo(i, j);
                     cntForNo++;
                 }
@@ -60,19 +61,22 @@ public class RedGreen10026 {
         System.out.println(cntForNo + " " + cntForYes);
 
     }
-
+    
+    /* 적록색약이 아닌 사람이 보는 구역 dfs 탐색 */
     private static void dfsForNo(int x, int y) {
         checkForNo[x][y] = true;
         for (int[] di : dis) {
             nx = x + di[0];
             ny = y + di[1];
             if (isInRange() && !checkForNo[nx][ny] && board[nx][ny] == board[x][y]) {
+                // 현재 좌표와 다음 좌표가 완전히 일치할 경우
                 checkForNo[nx][ny] = true;
                 dfsForNo(nx, ny);
             }
         }
     }
 
+    /* 적록색약인 사람이 보는 구역 dfs 탐색 */
     private static void dfsForYes(int x, int y) {
         checkForYes[x][y] = true;
         for (int[] di : dis) {
@@ -80,13 +84,14 @@ public class RedGreen10026 {
             ny = y + di[1];
             if (isInRange() && !checkForYes[nx][ny] &&
                     ((board[nx][ny] == board[x][y]) || (board[x][y] != 'B' && board[nx][ny] != 'B'))) {
+                // 현재 좌표와 다음 좌표가 완전히 일치하거나, 두 좌표 모두 적록에 해당하지 않을 경우
                 checkForYes[nx][ny] = true;
                 dfsForYes(nx, ny);
             }
         }
     }
 
-
+    /* 현재 가리키는 (x, y) 좌표가 범위 안에 있는지 확인 */
     static boolean isInRange() {
         return nx >= 0 && ny >= 0 && nx < n && ny < n;
     }
